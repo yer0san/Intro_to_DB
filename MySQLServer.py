@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 MySQLServer.py
 Creates a MySQL database named 'alx_book_store' if it does not already exist.
@@ -21,7 +22,8 @@ def create_database():
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
             print("Database 'alx_book_store' created successfully!")
 
-    except Error as e:
+    except mysql.connector.Error as e:
+        # Catch only MySQL connection-related errors
         print(f"Error while connecting to MySQL: {e}")
 
     finally:
